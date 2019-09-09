@@ -4,24 +4,24 @@
 #include<fstream>
 #include<iomanip>
 #include<iostream>
-#define M 101													//节点数
-#define N 100													//网格数
+#define M 101															//节点数
+#define N 100															//网格数
 #define Nrel 1e4
 double phi[M][M], Ni[M][M], Ne[M][M], Ex[M][M], Ey[M][M];				//节点电势值phi,节点正离子密度Ni,节点负离子密度Ne,电场E
 double Num[N][N], Nume[N][N], D[N][N], Di[N][N], De[N][N];				//正离子数Num,负离子数Nume,粒子数密度D,正离子数密度Di,负离子数密度De
 double phi1[M][M], E[M][M];
-double vx[N * N * 10], vy[N * N * 10];                       					//正离子速度v
+double vx[N * N * 10], vy[N * N * 10];                       			//正离子速度v
 double vex[N * N * 10], vey[N * N * 10];								//电子速度ve
-double Px[N * N * 10], Py[N * N * 10];								//正离子位置P
+double Px[N * N * 10], Py[N * N * 10];									//正离子位置P
 double Pex[N * N * 10], Pey[N * N * 10];								//电子位置Pe
-double kB = 1.38e-23, T = 500.0;									//玻尔兹曼常数kB,粒子温度T
-double mi = 2.18e-25, me = 2.18e-25;								//正离子质量mi,负离子质量me
+double kB = 1.38e-23, T = 500.0;										//玻尔兹曼常数kB,粒子温度T
+double mi = 2.18e-25, me = 2.18e-25;									//正离子质量mi,负离子质量me
 double ep0 = 8.854e-12, e = 1.6e-19, ni = 10e15, ne = 10e15;			//真空介电常数ep0,元电荷e,正离子数密度ni,负离子数密度ne
-double vth, pi = 3.1415926;										//粒子热力学速度vth,圆周率pi
-double dx = 1e-5, dt = 1e-9;										//网格宽度dx,仿真步长dt
+double vth, pi = 3.1415926;												//粒子热力学速度vth,圆周率pi
+double dx = 1e-5, dt = 1e-9;											//网格宽度dx,仿真步长dt
 int K = 1e5, L=1e5;
 int k = 0, l = 0;
-void initial()													//初始化粒子位置和速度
+void initial()															//初始化粒子位置和速度
 {
 	int i, j, k, n = 0;
 	double R1, R2, R3, R4;
